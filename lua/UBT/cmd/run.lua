@@ -156,7 +156,8 @@ function M.start(opts)
           get_preset_by_name(last_name, function(p)
               if p then run_default(p) else 
                   -- Fallback if last preset not found
-                  run_default({ IsEditor = true, Platform = "Win64", Configuration = "Development", name = "Default" })
+                  local platform = vim.fn.has("unix") == 1 and "Linux" or "Win64"
+                  run_default({ IsEditor = true, Platform = platform, Configuration = "Development", name = "Default" })
               end
           end)
           return
@@ -164,9 +165,8 @@ function M.start(opts)
     end
 
     -- デフォルトプリセットを動的生成
-    run_default({ IsEditor = true, Platform = "Win64", Configuration = "Development", name = "Default" })
+    run_default({ IsEditor = true, Platform = vim.fn.has("unix") == 1 and "Linux" or "Win64", Configuration = "Development", name = "Default" })
   end
 end
 
 return M
-

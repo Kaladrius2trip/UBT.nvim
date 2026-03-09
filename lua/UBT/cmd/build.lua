@@ -11,10 +11,13 @@ local M = {}
 -- ジョブを実際に実行するコア部分
 local function run_job(opts)
   opts = core.ensure_command_args(opts, "Build")
-  core.create_command_with_target_platforms(opts, {
+  local extra = {
     "-WaitMutex",
-    "-FromMSBuild",
-  }, function(cmd, err)
+  }
+  if vim.fn.has("win32") == 1 then
+    table.insert(extra, "-FromMSBuild")
+  end
+  core.create_command_with_target_platforms(opts, extra, function(cmd, err)
       if err then
         return log.get().error(err)
       end

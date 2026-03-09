@@ -25,13 +25,13 @@ local M = {
   unreal_processes_name = { "UnrealEditor" , "UnrealBuildTool" },
 
   presets = {
-    { name = "Win64DebugGame", Platform = "Win64", IsEditor = false, Configuration = "DebugGame" },
-    { name = "Win64Develop", Platform = "Win64", IsEditor = false, Configuration = "Development" },
-    { name = "Win64Shipping", Platform = "Win64", IsEditor = false, Configuration = "Shipping" },
-    { name = "Win64DebugGameWithEditor", Platform = "Win64", IsEditor = true, Configuration = "DebugGame" },
-    { name = "Win64DevelopWithEditor", Platform = "Win64", IsEditor = true, Configuration = "Development" },
+    { name = "LinuxDebugGame", Platform = "Linux", IsEditor = false, Configuration = "DebugGame" },
+    { name = "LinuxDevelop", Platform = "Linux", IsEditor = false, Configuration = "Development" },
+    { name = "LinuxShipping", Platform = "Linux", IsEditor = false, Configuration = "Shipping" },
+    { name = "LinuxDebugGameWithEditor", Platform = "Linux", IsEditor = true, Configuration = "DebugGame" },
+    { name = "LinuxDevelopWithEditor", Platform = "Linux", IsEditor = true, Configuration = "Development" },
   },
-  preset_target = "Win64DevelopWithEditor",
+  preset_target = "LinuxDevelopWithEditor",
 -- trueの場合、!なしコマンド(UBT buildなど)は、
   -- 最後に成功したプリセットをデフォルトとして使用します。
   -- falseの場合、常に上記の preset_target を使用します。

@@ -8,10 +8,16 @@ local M = {}
 
 function M.start(opts)
   opts = core.ensure_command_args(opts, "GenerateProjectFiles")
+  local output_dir_arg
+  if vim.fn.has("win32") == 1 then
+    output_dir_arg = "-OutputDir=" .. '"'..opts.root_dir..'"'
+  else
+    output_dir_arg = "-OutputDir=" .. opts.root_dir
+  end
   local cmd, err = core.create_command(opts.root_dir, opts.mode, {
     "-game",
     "-engine",
-    "-OutputDir=" .. '"'..opts.root_dir..'"',
+    output_dir_arg,
   })
 
 

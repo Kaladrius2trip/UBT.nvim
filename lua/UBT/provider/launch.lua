@@ -81,7 +81,7 @@ function M.request(opts, on_complete)
         end
       else
         -- 最終手段
-        preset = { IsEditor = true, Platform = "Win64", Configuration = "Development", name = "Default (Development Editor)" }
+        preset = { IsEditor = true, Platform = vim.fn.has("unix") == 1 and "Linux" or "Win64", Configuration = "Development", name = "Default (Development Editor)" }
       end
       
       finish(preset)
